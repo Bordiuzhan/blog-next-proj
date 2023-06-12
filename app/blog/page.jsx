@@ -1,3 +1,4 @@
+import { Posts } from "@/components/Posts";
 import Link from "next/link";
 
 
@@ -25,14 +26,7 @@ export default async function Blog(){
     const posts=await getData()
 
     return <><h1>Blog page</h1>
-    <ul>
-        {posts.map((post)=>(
-            
-            <li key={post.id}>
-                <Link href={`/blog/${post.id}`}>{post.title}</Link>
-            </li>
-        ))}
-    </ul>
-    
+  
+    <Posts posts={posts}></Posts>
     </>
 }
