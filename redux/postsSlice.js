@@ -1,3 +1,5 @@
+"use client";
+
 import { createSlice } from "@reduxjs/toolkit";
 import { fetchPosts} from "./operations";
 
@@ -19,10 +21,10 @@ const postsSlice = createSlice({
   },
   extraReducers: {
     [fetchPosts.pending]: handlePending,
-    [fetchPosts.fulfilled](state, action) {
+    [fetchPosts.fulfilled](state, action) {   
       state.isLoading = false;
       state.error = null;
-      state.items = action.payload;
+      state.posts = action.payload;
     },
     [fetchPosts.rejected]: handleRejected,
   },

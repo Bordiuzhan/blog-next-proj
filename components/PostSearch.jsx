@@ -1,21 +1,24 @@
 'use client';
 
+import { setFilterData } from '@/redux/filterSlice';
+import { selectFilter } from '@/redux/selectors';
 import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 const PostSearch =   () => {
-  const [search, setSearch] = useState('');
+  const dispatch = useDispatch();
+  const filter = useSelector(selectFilter);
 
   return (
     <form>
       <input
         type="search"
         placeholder="search"
-        value={value}
-        onChange={(event) => {
-          setSearch(event.target.value);
+        value={filter}
+        onChange={(e) => {
+          dispatch(setFilterData(e.currentTarget.value));
         }}
       />
-      <button type="submit">Search</button>
     </form>
   );
 };

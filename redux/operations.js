@@ -1,20 +1,22 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import axios from "axios";
 
 
-export const getAllPosts = async () => {
-    const response = await fetch("https://jsonplaceholder.typicode.com/posts");
+axios.defaults.baseURL = "https://jsonplaceholder.typicode.com";
+// export const getAllPosts = async () => {
+//     const response = await fetch("https://jsonplaceholder.typicode.com");
   
-    if (!response.ok) throw new Error("Unable to fetch posts.");
+//     if (!response.ok) throw new Error("Unable to fetch posts.");
   
-    return response.json();
-  };
+//     return response.json();
+//   };
 
 export const fetchPosts = createAsyncThunk(
-  "tasks/fetchAll",
+  "posts/fetchPosts",
   async (_, thunkAPI) => {
     try {
-      const response = getAllPosts();
-      return response;
+      const response =await axios.get("/posts");
+      return response.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
     }
