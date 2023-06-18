@@ -1,10 +1,16 @@
 'use client';
+import { ApiError } from 'next/dist/server/api-utils';
 import Link from 'next/link';
+import { signOut, useSession } from 'next-auth/react';
+
 import { usePathname } from 'next/navigation';
 
 const Navigation = ({ navLinks }) => {
   const pathname = usePathname();
-  
+
+  // використовується для  ApiError
+  const session = useSession();
+  console.log(session.data);
 
   return (
     <>
@@ -21,6 +27,19 @@ const Navigation = ({ navLinks }) => {
           </Link>
         );
       })}
+      {session?.data && <Link href="/profile">Profile</Link>}
+      {session?.data ? (
+        <Link
+          href="#"
+          onClick={() => {
+            signOut({ callbackUrl: '/' });
+          }}
+        >
+          Sign Out
+        </Link>
+      ) : (
+        <Link href="/api/auth/signin"></Link>
+      )}
     </>
   );
 };
