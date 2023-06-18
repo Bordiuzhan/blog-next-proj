@@ -27,18 +27,13 @@ const Navigation = ({ navLinks }) => {
           </Link>
         );
       })}
-      {session?.data && <Link href="/profile">Profile</Link>}
+      {session?.data && <Link href="/profile"  className={pathname === "/profile" ? 'active' : ''}>Profile</Link>}
       {session?.data ? (
-        <Link
-          href="#"
-          onClick={() => {
-            signOut({ callbackUrl: '/' });
-          }}
-        >
+        <Link href="#" onClick={() => signOut({ callbackUrl: "/" })}>
           Sign Out
         </Link>
       ) : (
-        <Link href="/api/auth/signin"></Link>
+        <Link href="/signin" className={pathname === "/signin" ? 'active' : ''}>SignIn</Link>
       )}
     </>
   );
