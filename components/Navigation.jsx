@@ -10,8 +10,7 @@ const Navigation = ({ navLinks }) => {
 
   // використовується для  ApiError
   const session = useSession();
-  console.log(session.data);
-
+ 
   return (
     <>
       {navLinks.map((link) => {

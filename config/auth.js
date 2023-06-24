@@ -32,3 +32,5 @@ export const authConfig = {
     signIn:"/signin"
   }
 };
+
+
