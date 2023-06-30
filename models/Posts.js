@@ -1,23 +1,22 @@
-import mongoose from 'mongoose';
+import mongoose, { SchemaTypes } from 'mongoose';
 
 const PostsSchema = new mongoose.Schema({
-  userId: {
-    type: Number,
-    // required: true,
-  },
-  id: {
-    type: Number,
-    // required: true,
+  // userId: {
+  //   type:  SchemaTypes.ObjectId,
+  //   // required: true,
+  // },
+  _id:{
+    type:  SchemaTypes.ObjectId,
   },
   title: {
     type: String,
-    // required: true,
+    required: true,
   },
   body: {
     type: String,
-    // required: true,
+    required: true,
   },
-});
+}, { versionKey: false, timestamps: true });
 
 const Posts = mongoose.models.Posts || mongoose.model('Posts', PostsSchema);
 export default Posts;

@@ -8,6 +8,7 @@ import { fetchPosts } from '@/redux/operations';
 import { selectVisiblePosts } from '@/redux/selectors';
 
 
+
 const Posts = () => {
   const dispatch = useDispatch();
   const posts = useSelector(selectVisiblePosts);
@@ -21,8 +22,8 @@ const Posts = () => {
   return (
     <ul>
       {posts.map((post) => (
-        <li key={post.id}>
-          <Link href={`/blog/${post.id}`}>{post.title}</Link>
+        <li key={post._id}>
+          <Link href={`/blog/${post._id}`}>{post.title}</Link>
         </li>
       ))}
     </ul>

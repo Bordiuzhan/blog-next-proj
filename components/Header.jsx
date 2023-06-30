@@ -3,6 +3,7 @@ import { Navigation } from './Navigation';
 const navItem = [
   { label: 'Home', href: '/' },
   { label: 'Blog', href: '/blog' },
+  { label: 'Add Post', href: '/add' },
   { label: 'About', href: '/about' },
 ];
 

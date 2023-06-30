@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import { createSlice } from "@reduxjs/toolkit";
-import { fetchPosts} from "./operations";
+import { createSlice } from '@reduxjs/toolkit';
+import { addPost, fetchPosts } from './operations';
 
-const handlePending = state => {
+const handlePending = (state) => {
   state.isLoading = true;
 };
 
@@ -13,15 +13,21 @@ const handleRejected = (state, action) => {
 };
 
 const postsSlice = createSlice({
-  name: "posts",
+  name: 'posts',
   initialState: {
     posts: [],
     isLoading: false,
     error: null,
   },
   extraReducers: {
+    [addPost.pending]: handlePending,
+    [addPost.fulfilled](state) {
+      state.isLoading = false;
+      state.error = null;
+    },
+    [addPost.rejected]: handleRejected,
     [fetchPosts.pending]: handlePending,
-    [fetchPosts.fulfilled](state, action) {   
+    [fetchPosts.fulfilled](state, action) {
       state.isLoading = false;
       state.error = null;
       state.posts = action.payload;

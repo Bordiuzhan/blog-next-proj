@@ -18,6 +18,6 @@ export const selectVisiblePosts = createSelector(
       }
       return posts.filter(({title}) =>
         title.toLowerCase().includes(normalizedFilter)
-      );
+      ).reverse();
     }
   );

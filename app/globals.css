@@ -91,3 +91,15 @@ button {
   display: grid;
   gap: 1rem;
 }
+.add-form{
+  display: flex;
+  justify-content: space-around;
+  gap: 1rem;
+  flex-direction: column;
+  align-items: center;
+}
+ .add-form textarea{
+  height:300px;
+	width:90%;
+  resize:none;
+ }
