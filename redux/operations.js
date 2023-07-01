@@ -20,6 +20,7 @@ export const fetchPosts = createAsyncThunk(
 export const addPost = createAsyncThunk(
   'posts/addPost',
   async (post, thunkAPI) => {
+    console.log("REDUX OPER",post);
     try {
       const response = await axios.post('/api/posts', post);
       return response.data;

@@ -1,3 +1,6 @@
+import { Navigation } from "@/components/Navigation";
+import Link from "next/link";
+
 const BASE_URL=process.env.BASE_URL
 
 async function getData(id) {
@@ -26,8 +29,8 @@ export default async function Post({ params: { id } }) {
 
   return (
     <>
+    <Link key={' Go back'} href={'/blog'}>⬅ Go back</Link>
       <h1> {post.title}</h1>
       <p>{post.body}</p>
-    </>
-  );
+    </> );
 }

@@ -1,12 +1,9 @@
 import mongoose, { SchemaTypes } from 'mongoose';
 
 const PostsSchema = new mongoose.Schema({
-  // userId: {
-  //   type:  SchemaTypes.ObjectId,
-  //   // required: true,
-  // },
-  _id:{
-    type:  SchemaTypes.ObjectId,
+  userId: {
+    type:  String
+    // required: true,
   },
   title: {
     type: String,

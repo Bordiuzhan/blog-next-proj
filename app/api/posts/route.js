@@ -19,6 +19,7 @@ const handler = async (req) => {
     case 'POST':
       try {
         const body = await req.json();
+        console.log("API POST ROUTE",body);
         const data = await addPost(body);
         return NextResponse.json(data)
       } catch (er) {
