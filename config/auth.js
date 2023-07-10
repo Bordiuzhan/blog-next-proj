@@ -1,6 +1,10 @@
 import GoogleProvider from 'next-auth/providers/google';
 import Credentials from 'next-auth/providers/credentials';
-import { users } from '@/data/users';
+import dbConnect from '@/lib/dbConnect';
+import User from '@/models/User';
+import bcrypt from 'bcrypt';
+
+
 
 export const authConfig = {
   providers: [
@@ -13,24 +17,44 @@ export const authConfig = {
         email: { label: 'email', type: 'email', required: true },
         password: { label: 'password', type: 'password', required: true },
       },
-      async authorize(credential) {
-        if (!credential?.email || !credential.password) return null;
+      async authorize(credentials, req) {
+       
+        if (!credentials?.email || !credentials.password) return null;
 
-        const currentUser = users.find(
-          (user) => user.email === credential.email
+        await dbConnect();
+
+        const userFound = await User.findOne({
+          email: credentials.email,
+        }).select("+password");
+        console.log('user FOUND', userFound);
+
+        if (!userFound) throw new Error('Invalid credentials');
+
+        const passwordMatch = await bcrypt.compare(
+          credentials.password,
+          userFound.password
         );
+        if (!passwordMatch) throw new Error('Invalid credentials');
 
-        if (currentUser && currentUser.password === credential.password) {
-          const { password, ...userWithoutPass } = currentUser;
-          return userWithoutPass;
-        }
-        return null;
+        const { password, ...userWithoutPass } = userFound;
+
+        console.log(userFound);
+
+        return userFound;
       },
     }),
   ],
-  pages:{
-    signIn:"/signin"
-  }
+  callbacks: {
+    jwt({ account, token, user, profile, session }) {
+      if (user) token.user = user;
+      return token;
+    },
+    session({ session, token }) {
+      session.user = token.user;
+      return session;
+    },
+  },
+  pages: {
+    signIn: '/signin',
+  },
 };
-
-

@@ -1,14 +1,19 @@
-import { authConfig } from "@/config/auth";
-import { getServerSession } from "next-auth";
+"use client"
 
-export default async function Profile() {
-const session = await getServerSession(authConfig)
+import { useSession } from "next-auth/react";
+import Image from "next/image";
+
+export default  function Profile() {
+const {data:session,status} =  useSession()
+
+
 
 
   return (
     <div>
-      <h1> {session?.user?.name} </h1>
-      {session?.user?.image && <img src={session.user.image} alt="user image"></img>}
+      <h1> {session?.user?.fullname} </h1>
+      <h3> {session?.user?.email} </h3>
+      {session?.user?.image && <Image src={session.user.image} alt="user image"></Image>}
     </div>
   );
 }

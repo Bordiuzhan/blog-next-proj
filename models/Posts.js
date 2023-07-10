@@ -1,19 +1,19 @@
-import mongoose, { SchemaTypes } from 'mongoose';
+import  { SchemaTypes,Schema,model, models } from 'mongoose';
 
-const PostsSchema = new mongoose.Schema({
+const PostsSchema = new Schema({
   userId: {
     type:  String
     // required: true,
   },
   title: {
     type: String,
-    required: true,
+    required: [true,"Title is required"],
   },
   body: {
     type: String,
-    required: true,
+    required: [true,"Body is required"],
   },
 }, { versionKey: false, timestamps: true });
 
-const Posts = mongoose.models.Posts || mongoose.model('Posts', PostsSchema);
+const Posts = models.Posts ||model('Posts', PostsSchema);
 export default Posts;

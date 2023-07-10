@@ -1,10 +1,11 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
+import axios, { AxiosError } from 'axios';
 import { signIn } from 'next-auth/react';
 import { Notify } from 'notiflix';
 
-const SignInForm = () => {
+const RegisterForm = () => {
   const router = useRouter();
 
   const handleSubmit = async (event) => {
@@ -13,8 +14,14 @@ const SignInForm = () => {
     const formData = new FormData(event.currentTarget);
 
     try {
-      const res = await signIn('credentials', {
+      const signupResponse = await axios.post('/api/auth/signup', {
+        fullname: formData.get('fullname'),
         email: formData.get('email'),
+        password: formData.get('password'),
+      });
+
+      const res = await signIn('credentials', {
+        email: signupResponse.data.email,
         password: formData.get('password'),
         redirect: false,
       });
@@ -25,13 +32,14 @@ const SignInForm = () => {
       }
     } catch (error) {
       if (error instanceof AxiosError) {
-        Notify.failure('Something went wrong');
+        Notify.failure('Something went wrong!');
       }
     }
   };
 
   return (
     <form onSubmit={handleSubmit} className="login-form">
+      <input type="text" name="fullname" placeholder="Jon Smeet" required />
       <input
         type="email"
         name="email"
@@ -39,9 +47,9 @@ const SignInForm = () => {
         required
       />
       <input type="password" name="password" placeholder="******" required />
-      <button>Sign In</button>
+      <button>Register</button>
     </form>
   );
 };
 
-export { SignInForm };
+export { RegisterForm };

@@ -29,7 +29,7 @@ export default async function Post({ params: { id } }) {
 
   return (
     <>
-    <Link key={' Go back'} href={'/blog'}>⬅ Go back</Link>
+    <Link key={'Go back'} href={'/blog'}>⬅ Go back</Link>
       <h1> {post.title}</h1>
       <p>{post.body}</p>
     </> );

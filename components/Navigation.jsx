@@ -7,7 +7,6 @@ import { usePathname } from 'next/navigation';
 
 const Navigation = ({ navLinks }) => {
   const pathname = usePathname();
-
   // використовується для  ApiError
   const session = useSession();
  
@@ -26,6 +25,7 @@ const Navigation = ({ navLinks }) => {
           </Link>
         );
       })}
+      {session?.data && <Link href="/add"  className={pathname === "/add" ? 'active' : ''}>Add Post</Link>}
       {session?.data && <Link href="/profile"  className={pathname === "/profile" ? 'active' : ''}>Profile</Link>}
       {session?.data ? (
         <Link href="#" onClick={() => signOut({ callbackUrl: "/" })}>
