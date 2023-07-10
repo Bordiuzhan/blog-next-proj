@@ -1,16 +1,28 @@
 import { NextResponse } from 'next/server';
-import handlerPost from './handler';
+import dbConnect from '@/lib/dbConnect';
+import Posts from '@/models/Posts';
 
 const handler = async (req, { params}) => {
 const {id}=await params;
-
+console.log("ID ROUTE");
   try {
-    const data = await handlerPost(id);
-    if (!data) throw new Error('Unable to fetch post');
-    return NextResponse.json(data);
-  } catch (er) {
-    console.log('UPS');
-  }
+    await dbConnect();
+    const post = await Posts.findById(id);
+    console.log(post);
+
+    if (!post) return NextResponse.json(
+      {
+        message: 'Unable to fetch post',
+      },
+      { status: 400 });
+
+    return NextResponse.json(post);
+  } catch (error) {console.log(error);
+    if (error instanceof Error) {
+      return NextResponse.json({
+        message :error.message
+      },{status:400,})
+    }}
 };
 
 export { handler as GET };

@@ -5,25 +5,40 @@ import addPost from './addPost';
 
 const handler = async (req) => {
   const { method } = req;
- console.log(method);
 
   switch (method) {
     case 'GET':
       try {
         const data = await handlerPosts();
-        if (!data) throw new Error('Unable to fetch posts');
+        if (!data) return NextResponse.json('Unable to fetch posts');
         return NextResponse.json(data);
-      } catch (er) {
-        console.log('UPS  GET POST');
+      } catch (error) {
+        console.log(error);
+        if (error instanceof Error) {
+          return NextResponse.json(
+            {
+              message: error.message,
+            },
+            { status: 400 }
+          );
+        }
       }
     case 'POST':
       try {
         const body = await req.json();
-        console.log("API POST ROUTE",body);
+        console.log('API POST ROUTE', body);
         const data = await addPost(body);
-        return NextResponse.json(data)
-      } catch (er) {
-        console.log('UPS ADD');
+        return NextResponse.json(data);
+      } catch (error) {
+        console.log(error);
+        if (error instanceof Error) {
+          return NextResponse.json(
+            {
+              message: error.message,
+            },
+            { status: 400 }
+          );
+        }
       }
   }
 };
