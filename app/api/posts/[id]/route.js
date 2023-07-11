@@ -4,7 +4,7 @@ import Posts from '@/models/Posts';
 
 const handler = async (req, { params}) => {
 const {id}=await params;
-console.log("ID ROUTE");
+
   try {
     await dbConnect();
     const post = await Posts.findById(id);

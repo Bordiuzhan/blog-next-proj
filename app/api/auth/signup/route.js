@@ -5,7 +5,6 @@ import bcrypt from 'bcrypt';
 
 export  async function POST(req) {
   const { fullname, email, password } = await req.json();
-  console.log(fullname, email, password);
 
   if (!password || password.length < 6) {
     return NextResponse.json(

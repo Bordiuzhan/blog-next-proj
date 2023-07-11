@@ -1,7 +1,9 @@
 import { NextResponse } from 'next/server';
 
-import handlerPosts from './handler';
-import addPost from './addPost';
+import dbConnect from '@/lib/dbConnect';
+import Posts from '@/models/Posts';
+import { getServerSession } from 'next-auth';
+import { authConfig } from '@/config/auth';
 
 const handler = async (req) => {
   const { method } = req;
@@ -9,9 +11,10 @@ const handler = async (req) => {
   switch (method) {
     case 'GET':
       try {
-        const data = await handlerPosts();
-        if (!data) return NextResponse.json('Unable to fetch posts');
-        return NextResponse.json(data);
+        await dbConnect();
+        const posts = await Posts.find();
+        if (!posts) return NextResponse.json('Unable to fetch posts');
+        return NextResponse.json(posts);
       } catch (error) {
         console.log(error);
         if (error instanceof Error) {
@@ -25,10 +28,20 @@ const handler = async (req) => {
       }
     case 'POST':
       try {
-        const body = await req.json();
-        console.log('API POST ROUTE', body);
-        const data = await addPost(body);
-        return NextResponse.json(data);
+        const { title, body } = await req.json();
+        const session = await getServerSession(authConfig);
+
+        if (session) {
+          const post = {  title, body,owner: session.user._id, };
+        console.log('API POST ROUTE', session.user._id);
+
+          await dbConnect();
+          const newPost = await Posts.create(post);
+
+          return NextResponse.json(newPost);
+        } else {
+          NextResponse.status(401);
+        }
       } catch (error) {
         console.log(error);
         if (error instanceof Error) {

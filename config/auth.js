@@ -26,7 +26,6 @@ export const authConfig = {
         const userFound = await User.findOne({
           email: credentials.email,
         }).select("+password");
-        console.log('user FOUND', userFound);
 
         if (!userFound) throw new Error('Invalid credentials');
 

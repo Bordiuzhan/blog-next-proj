@@ -1,10 +1,6 @@
 import  { SchemaTypes,Schema,model, models } from 'mongoose';
 
 const PostsSchema = new Schema({
-  userId: {
-    type:  String
-    // required: true,
-  },
   title: {
     type: String,
     required: [true,"Title is required"],
@@ -13,6 +9,10 @@ const PostsSchema = new Schema({
     type: String,
     required: [true,"Body is required"],
   },
+  owner: {
+    type: SchemaTypes.ObjectId,
+    ref: 'User',
+  }
 }, { versionKey: false, timestamps: true });
 
 const Posts = models.Posts ||model('Posts', PostsSchema);
