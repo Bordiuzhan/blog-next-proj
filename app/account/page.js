@@ -3,7 +3,7 @@
 import { useSession } from "next-auth/react";
 import Image from "next/image";
 
-export default  function Profile() {
+export default  function Account() {
 const {data:session,status} =  useSession()
 
 

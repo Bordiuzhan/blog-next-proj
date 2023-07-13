@@ -37,14 +37,12 @@ export const authConfig = {
 
         const { password, ...userWithoutPass } = userFound;
 
-        console.log(userFound);
-
         return userFound;
       },
     }),
   ],
   callbacks: {
-    jwt({ account, token, user, profile, session }) {
+    jwt({ account, token, user,  session }) {
       if (user) token.user = user;
       return token;
     },

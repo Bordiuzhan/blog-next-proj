@@ -21,7 +21,7 @@ const SignInForm = () => {
 
       if (res?.ok && !res.error) {
         Notify.success('Wellcome!');
-        return router.push('/profile');
+        return router.push('/account');
       }
     } catch (error) {
       if (error instanceof AxiosError) {

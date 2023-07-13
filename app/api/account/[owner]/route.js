@@ -3,19 +3,22 @@ import dbConnect from '@/lib/dbConnect';
 import Posts from '@/models/Posts';
 
 const handler = async (req, { params}) => {
-const {id}=await params;
+const {owner}=await params;
+
+console.log("OWNER",owner);
 
   try {
     await dbConnect();
-    const post = await Posts.findById(id);
+    const posts = await Posts.find({owner});
+    console.log(owner);
 
-    if (!post) return NextResponse.json(
+    if (!posts) return NextResponse.json(
       {
-        message: 'Unable to fetch post',
+        message: 'Unable to fetch posts',
       },
       { status: 400 });
 
-    return NextResponse.json(post);
+    return NextResponse.json(posts);
   } catch (error) {console.log(error);
     if (error instanceof Error) {
       return NextResponse.json({

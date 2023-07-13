@@ -9,7 +9,7 @@ const Navigation = ({ navLinks }) => {
   const pathname = usePathname();
   // використовується для  ApiError
   const session = useSession();
- 
+
   return (
     <>
       {navLinks.map((link) => {
@@ -25,14 +25,38 @@ const Navigation = ({ navLinks }) => {
           </Link>
         );
       })}
-      {session?.data && <Link href="/add"  className={pathname === "/add" ? 'active' : ''}>Add Post</Link>}
-      {session?.data && <Link href="/profile"  className={pathname === "/profile" ? 'active' : ''}>Profile</Link>}
+      {session?.data && (
+        <Link href="/add" className={pathname === '/add' ? 'active' : ''}>
+          Add Post
+        </Link>
+      )}
+      {session?.data && (
+        <Link
+          href="/account"
+          className={pathname === '/account' ? 'active' : ''}
+        >
+          Account
+        </Link>
+      )}
       {session?.data ? (
-        <Link href="#" onClick={() => signOut({ callbackUrl: "/" })}>
+        <Link href="#" onClick={() => signOut({ callbackUrl: '/' })}>
           Sign Out
         </Link>
       ) : (
-        <Link href="/signin" className={pathname === "/signin" ? 'active' : ''}>SignIn</Link>
+        <>
+          <Link
+            href="/signin"
+            className={pathname === '/signin' ? 'active' : ''}
+          >
+            SignIn
+          </Link>
+          <Link
+            href="/register"
+            className={pathname === '/register' ? 'active' : ''}
+          >
+            Register
+          </Link>
+        </>
       )}
     </>
   );

@@ -33,7 +33,6 @@ const handler = async (req) => {
 
         if (session) {
           const post = {  title, body,owner: session.user._id, };
-        console.log('API POST ROUTE', session.user._id);
 
           await dbConnect();
           const newPost = await Posts.create(post);
