@@ -17,6 +17,7 @@ const Posts = () => {
     dispatch(fetchPosts());    
   }, [dispatch]);
 
+  console.log(posts);
 
 
   return (
