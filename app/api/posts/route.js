@@ -4,6 +4,7 @@ import dbConnect from '@/lib/dbConnect';
 import Posts from '@/models/Posts';
 import { getServerSession } from 'next-auth';
 import { authConfig } from '@/config/auth';
+import mongoose from 'mongoose';
 
 const handler = async (req) => {
   const { method } = req;
@@ -28,12 +29,14 @@ const handler = async (req) => {
       }
     case 'POST':
       try {
-        const { title, body } = await req.json();
+        const { title, body,email } = await req.json();
         const session = await getServerSession(authConfig);
 
         if (session) {
-          const post = {  title, body,owner: session.user._id, };
-
+          
+          console.log(session);
+          const post = { title, body, owner: session.user.email };
+console.log("POST",post);
           await dbConnect();
           const newPost = await Posts.create(post);
 

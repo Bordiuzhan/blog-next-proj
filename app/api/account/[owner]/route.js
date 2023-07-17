@@ -10,7 +10,6 @@ console.log("OWNER",owner);
   try {
     await dbConnect();
     const posts = await Posts.find({owner});
-    console.log(owner);
 
     if (!posts) return NextResponse.json(
       {

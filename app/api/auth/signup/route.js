@@ -4,7 +4,7 @@ import { NextResponse } from 'next/server';
 import bcrypt from 'bcrypt';
 
 export  async function POST(req) {
-  const { fullname, email, password } = await req.json();
+  const { name, email, password } = await req.json();
 
   if (!password || password.length < 6) {
     return NextResponse.json(
@@ -27,7 +27,7 @@ export  async function POST(req) {
 
     const hashedPassword = await bcrypt.hash(password, 12);
 
-    const user = new User({ email, fullname, password: hashedPassword });
+    const user = new User({ email, name, password: hashedPassword });
     const savedUser=await user.save();
 
     return NextResponse.json(savedUser)

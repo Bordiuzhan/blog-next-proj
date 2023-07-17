@@ -10,7 +10,11 @@ export default async function PageAddPost() {
 
   return (
     <div>
-      <h1>Add Post</h1>
+      <div className="img-hero add">
+      <div className="title-wrapper">
+      <h1 className="title-hero">Add Post</h1>
+      </div>
+      </div>
       <FormAddPosts></FormAddPosts>
     </div>
   );

@@ -28,13 +28,15 @@ export default function MyPosts() {
   }, [dispatch]);
   console.log(posts);
   console.log(session);
-  console.log(session?.user._id);
+  
+  const userId=session.user._id ||session.user.id
+console.log(userId);
 
-  if (!session || !session.user || !session.user._id) {
+  if (!session || !session.user || !userId) {
     return <h1>Loading...</h1>;
   }
 
-  const myPosts = posts.filter((post) => post.owner === session.user._id);
+  const myPosts = posts.filter((post) => post.owner === session.user.email);
   console.log(myPosts);
   // const session = await getServerSession(authConfig);
   // console.log(session.user._id);

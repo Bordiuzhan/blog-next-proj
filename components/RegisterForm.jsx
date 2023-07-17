@@ -15,7 +15,7 @@ const RegisterForm = () => {
 
     try {
       const signupResponse = await axios.post('/api/auth/signup', {
-        fullname: formData.get('fullname'),
+        name: formData.get('name'),
         email: formData.get('email'),
         password: formData.get('password'),
       });
@@ -39,7 +39,7 @@ const RegisterForm = () => {
 
   return (
     <form onSubmit={handleSubmit} className="login-form">
-      <input type="text" name="fullname" placeholder="Jon Smeet" required />
+      <input type="text" name="name" placeholder="Jon Smeet" required />
       <input
         type="email"
         name="email"

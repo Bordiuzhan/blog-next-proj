@@ -10,7 +10,7 @@ const PostsSchema = new Schema({
     required: [true,"Body is required"],
   },
   owner: {
-    type: SchemaTypes.ObjectId,
+    type: String,
     ref: 'User',
   }
 }, { versionKey: false, timestamps: true });

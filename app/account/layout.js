@@ -1,15 +1,19 @@
 import Link from 'next/link';
 
-export default function AccountLayout({
-  children,
-}) {
+export default function AccountLayout({ children }) {
   return (
     <div>
-      <h1>Account</h1>
-      <ul>
-        <li>
-          <Link href="/account">Profile</Link>
-          <Link href="/account/myPosts">My posts</Link>
+      <div className="img-hero account">
+        <div className="title-wrapper">
+          <h1 className="title-hero">Account</h1>
+        </div>
+      </div>
+      <ul className="user-menu-list">
+        <li >
+          <Link href="/account" className='user-menu-link' >Profile</Link>
+        </li>
+        <li >
+          <Link href="/account/myPosts" className='user-menu-link'>My posts</Link>
         </li>
       </ul>
       {children}

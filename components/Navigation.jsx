@@ -11,7 +11,7 @@ const Navigation = ({ navLinks }) => {
   const session = useSession();
 
   return (
-    <>
+    <div className='navbar'>
       {navLinks.map((link) => {
         const isActive = pathname === link.href;
 
@@ -19,46 +19,46 @@ const Navigation = ({ navLinks }) => {
           <Link
             key={link.label}
             href={link.href}
-            className={isActive ? 'active' : ''}
+            className={isActive ? 'active' : 'nav-link'}
           >
             {link.label}
           </Link>
         );
       })}
       {session?.data && (
-        <Link href="/add" className={pathname === '/add' ? 'active' : ''}>
+        <Link href="/add" className={pathname === '/add' ? 'active' : 'nav-link'}>
           Add Post
         </Link>
       )}
       {session?.data && (
         <Link
           href="/account"
-          className={pathname === '/account' ? 'active' : ''}
+          className={pathname === '/account' ? 'active' : 'nav-link'}
         >
           Account
         </Link>
       )}
       {session?.data ? (
-        <Link href="#" onClick={() => signOut({ callbackUrl: '/' })}>
+        <Link href="#" className='nav-link' onClick={() => signOut({ callbackUrl: '/' })}>
           Sign Out
         </Link>
       ) : (
         <>
           <Link
             href="/signin"
-            className={pathname === '/signin' ? 'active' : ''}
+            className={pathname === '/signin' ? 'active' : 'nav-link'}
           >
             SignIn
           </Link>
           <Link
             href="/register"
-            className={pathname === '/register' ? 'active' : ''}
+            className={pathname === '/register' ? 'active' : 'nav-link'}
           >
             Register
           </Link>
         </>
       )}
-    </>
+    </div>
   );
 };
 

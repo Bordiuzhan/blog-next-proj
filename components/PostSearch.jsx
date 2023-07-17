@@ -10,7 +10,7 @@ const PostSearch =   () => {
   const filter = useSelector(selectFilter);
 
   return (
-    <form>
+    <form className='search-form'>
       <input
         type="search"
         placeholder="search"

@@ -25,9 +25,9 @@ export default async function FormAddPosts() {
     
       return (
         <form onSubmit={handleSubmit} className="add-form">
-        <input type="text" name="title" placeholder="Title" required />
-        <textarea type="text" name="post" placeholder="Text.." required />
-        <button type="submit">Add Post</button>
+        <input type="text" name="title" placeholder="Title" className="add-title"required />
+        <textarea type="text" name="post" placeholder="Text.." className="add-text" required />
+        <button type="submit" className="add-button">Add Post</button>
       </form>
       );
     }

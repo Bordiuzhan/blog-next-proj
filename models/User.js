@@ -13,12 +13,12 @@ const userSchema = new Schema({
     select:false,
   },
 
-  fullname: {
+  name: {
     type: String,
     unique: true,
-    required: [true, 'Fullnamer is required'],
-    minLength: [3, 'Fullname must be at least 3 characters'],
-    maxLength: [50, 'Fullname must be at most 50 characters'],
+    required: [true, 'Name is required'],
+    minLength: [3, 'Name must be at least 3 characters'],
+    maxLength: [50, 'Name must be at most 50 characters'],
   },
 });
 

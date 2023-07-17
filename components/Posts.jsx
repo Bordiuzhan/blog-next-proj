@@ -6,28 +6,28 @@ import Link from 'next/link';
 
 import { fetchPosts } from '@/redux/operations';
 import { selectVisiblePosts } from '@/redux/selectors';
-
-
+import { PostCard } from './PostCrad';
 
 const Posts = () => {
   const dispatch = useDispatch();
   const posts = useSelector(selectVisiblePosts);
 
   useEffect(() => {
-    dispatch(fetchPosts());    
+    dispatch(fetchPosts());
   }, [dispatch]);
 
   console.log(posts);
 
-
   return (
-    <ul>
-      {posts.map((post) => (
-        <li key={post._id}>
-          <Link href={`/blog/${post._id}`}>{post.title}</Link>
-        </li>
-      ))}
-    </ul>
+    <div className='wrapper-posts-list'>
+      <ul>
+        {posts.map((post) => (
+          <li className='posts-list' key={post._id}>
+            <Link className='post-link' href={`/blog/${post._id}`}><PostCard data={post}/></Link>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 };
 
