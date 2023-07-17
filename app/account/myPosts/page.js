@@ -29,7 +29,7 @@ export default function MyPosts() {
   console.log(posts);
   console.log(session);
   
-  const userId=session.user._id ||session.user.id
+  const userId=session?.user?._id ||session?.user?.id
 console.log(userId);
 
   if (!session || !session.user || !userId) {
