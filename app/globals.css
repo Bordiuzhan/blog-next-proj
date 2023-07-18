@@ -70,11 +70,17 @@ form {
 }
 
 form button,
-button {
-  background-color: var(--color-active);
-  cursor: pointer;
-  color: white;
+button {  width: 85%;
+  height: 40px;
+  margin: 12px auto 10%;
+  color: #fff;
+  background: #573b8a;
+  font-size: 1rem;
+  font-weight: bold;
   border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: .2s ease-in;
 }
 
 input[type='search'] {
@@ -157,6 +163,8 @@ input[type='search'] {
 }
 
 .stack {
+  height: 100vh;
+  background-image: url("../img/notepad-g0314acffd_1280.jpg");
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -265,19 +273,13 @@ input[type='search'] {
 .user-menu-link:active {
   color: #0085a1;
 }
-.user-menu-link:focus{
+.user-menu-link:focus {
   text-decoration: underline;
 }
 
 .user-menu-link {
   color: #000;
   text-decoration: none;
-}
-.wrapper-user {
-  border: 1px solid #000;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
 }
 
 /* border: #0f7dc6 2px solid; */
@@ -289,7 +291,6 @@ footer {
   width: 100%;
 }
 
-
 .image-container {
   width: 200px;
   height: 200px;
@@ -298,28 +299,188 @@ footer {
   align-items: center;
   border: 1px solid #ccc;
   /* border-radius: 50%;  */
-  overflow: hidden; 
+  overflow: hidden;
 }
-
 
 .user-image {
   width: 100%;
   height: 100%;
-  object-fit: cover; 
+  object-fit: cover;
   /* border-radius: 50%;  */
 }
-
 
 .placeholder-image {
   width: 100%;
   height: 100%;
-  object-fit: cover; 
+  object-fit: cover;
   /* border-radius: 50%;  */
-  background-color: #f1f1f1; 
+  background-color: #f1f1f1;
   /* Опціонально, можна додати текст або іконку на фоні, щоб вказати заглушку */
   display: flex;
   justify-content: center;
   align-items: center;
   color: #888;
   font-size: 18px;
+}
+
+.card {
+  margin: auto;
+  width: 300px;
+  height: 400px;
+  transition: all 0.2s;
+  position: relative;
+}
+
+.card-inner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  width: inherit;
+  height: inherit;
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(10px);
+  border-radius: 8px;
+}
+
+.circle {
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(#71a1b4, #4155b9);
+  border-radius: 50%;
+  position: absolute;
+  animation: move-up6 2s ease-in infinite alternate-reverse;
+}
+
+.circle:nth-child(1) {
+  top: -25px;
+  left: -25px;
+}
+
+.circle:nth-child(2) {
+  bottom: -25px;
+  right: -25px;
+  animation-name: move-down1;
+}
+
+@keyframes move-up6 {
+  to {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes move-down1 {
+  to {
+    transform: translateY(10px);
+  }
+}
+
+
+
+
+.main {
+  margin-top: 350px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background-color: #240046;
+  max-height: 420px;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 7px 7px 10px 3px #24004628;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 24px;
+}
+
+/*checkbox to switch from sign up to login*/
+#chk {
+  display: none;
+}
+
+/*Login*/
+.login {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.login label {
+  margin: 25% 0 5%;
+}
+
+label {
+  color: #fff;
+  font-size: 2rem;
+  justify-content: center;
+  display: flex;
+  font-weight: bold;
+  cursor: pointer;
+  transition: .5s ease-in-out;
+}
+
+.input {
+  width: 100%;
+  height: 40px;
+  background: #e0dede;
+  padding: 10px;
+  border: none;
+  outline: none;
+  border-radius: 4px;
+}
+
+/*Register*/
+.register {
+  background: #eee;
+  border-radius: 60% / 10%;
+  transform: translateY(5%);
+  transition: .8s ease-in-out;
+}
+
+.register label {
+  color: #573b8a;
+  transform: scale(.6);
+}
+
+#chk:checked ~ .register {
+  transform: translateY(-60%);
+}
+
+#chk:checked ~ .register label {
+  transform: scale(1);
+  margin: 10% 0 5%;
+}
+
+#chk:checked ~ .login label {
+  transform: scale(.6);
+  margin: 5% 0 5%;
+}   
+/*Button*/
+.form button {
+  width: 85%;
+  height: 40px;
+  margin: 12px auto 10%;
+  color: #fff;
+  background: #573b8a;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: .2s ease-in;
+}
+
+.form button:hover {
+  background-color: #6d44b8;
+}
+
+.form, span{
+  text-align: center;
+  color: #fff;
 }

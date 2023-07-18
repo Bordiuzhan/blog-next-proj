@@ -3,6 +3,7 @@
 import { useRouter } from 'next/navigation';
 import { signIn } from 'next-auth/react';
 import { Notify } from 'notiflix';
+import { GoogleButton } from './GoogleButton';
 
 const SignInForm = () => {
   const router = useRouter();
@@ -30,8 +31,10 @@ const SignInForm = () => {
     }
   };
 
-  return (
-    <form onSubmit={handleSubmit} className="login-form">
+  return (<>
+    <div className="main"> 
+    <form onSubmit={handleSubmit} className="form">
+      <label for="chk" aria-hidden="true">Log in</label>
       <input
         type="email"
         name="email"
@@ -40,8 +43,34 @@ const SignInForm = () => {
       />
       <input type="password" name="password" placeholder="******" required />
       <button>Sign In</button>
-    </form>
+    </form><span>or</span>
+     <GoogleButton/></div>
+     </>
   );
+
+
+//   <div className="main">  	
+// 		<input type="checkbox" id="chk" aria-hidden="true">
+
+// 			<div className="login">
+// 				<form className="form" onSubmit={handleSubmit}>
+// 					<label for="chk" aria-hidden="true">Log in</label>
+// 					<input className="input" type="email" name="email" placeholder="Email" required>
+// 					<input className="input" type="password" name="password" placeholder="Password" required>
+// 					<button>Log in</button>
+// 				</form>
+// 			</div>
+
+//       <div className="register">
+// 				<form className="form">
+// 					<label for="chk" aria-hidden="true">Register</label>
+// 					<input className="input" type="text" name="txt" placeholder="Username" required="">
+// 					<input className="input" type="email" name="email" placeholder="Email" required="">
+// 					<input className="input" type="password" name="password" placeholder="Password" required="">
+// 					<button>Register</button>
+// 				</form>
+// 			</div>
+// 	</div>
 };
 
 export { SignInForm };

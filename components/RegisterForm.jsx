@@ -38,17 +38,20 @@ const RegisterForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="login-form">
-      <input type="text" name="name" placeholder="Jon Smeet" required />
-      <input
-        type="email"
-        name="email"
-        placeholder="Some email@mail.com"
-        required
-      />
-      <input type="password" name="password" placeholder="******" required />
-      <button>Register</button>
-    </form>
+    <div className="main">
+      <form onSubmit={handleSubmit} className="form">
+      <label for="chk" aria-hidden="true">Register</label>
+        <input type="text" name="name" placeholder="Jon Smeet" required />
+        <input
+          type="email"
+          name="email"
+          placeholder="Some email@mail.com"
+          required
+        />
+        <input type="password" name="password" placeholder="******" required />
+        <button>Register</button>
+      </form>
+    </div>
   );
 };
 

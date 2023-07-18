@@ -17,6 +17,7 @@ import { selectPosts } from '@/redux/selectors';
 import { useSession } from 'next-auth/react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { PostCard } from '@/components/PostCrad';
 
 export default function MyPosts() {
   const { data: session, status } = useSession();
@@ -45,18 +46,19 @@ console.log(userId);
 
   // console.log(posts);
 
-  // if (posts === []) {
-  //   return <h3>You have no posts yet</h3>;
-  // }
+  if (myPosts === []) {
+    return <h3>You have no posts yet</h3>;
+  }
 
   return (
-    
+    <div className='wrapper-posts-list'>
     <ul>
       {myPosts.map((post) => (
-        <li key={post._id}>
-          <Link href={`/blog/${post._id}`}>{post.title}</Link>
+        <li className='posts-list' key={post._id}>
+          <Link className='post-link' href={`/blog/${post._id}`}><PostCard data={post}/><button>Delete</button></Link>
         </li>
       ))}
     </ul>
+    </div>
   );
 }
