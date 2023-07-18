@@ -14,7 +14,7 @@ export default function Account() {
   {session?.user?.image ? (
     <img className="user-image" src={session.user.image} alt="user image" />
   ) : (
-    <Image className="placeholder-image" src="/img/male-g6a052d095_640.png" width={200} height={200} alt="user image placeholder" />
+    <img className="placeholder-image" src="../img/male-g6a052d095_640.png"  alt="user image placeholder" />
   )}
 </div>
     </div>
