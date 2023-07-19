@@ -183,22 +183,37 @@ input[type='search'] {
   background-position: center;
   height: 400px;
 }
+
+
+.home-text-container{
+  padding-top: 300px;
+  margin: auto ;
+  text-align: center;
+  width: 50%;
+}
+.home-text{
+  font-weight: bold;
+  font-size: 24px;
+  margin: 0;
+}
+
 .blog {
   background-image: url('../img/home-bg.jpg');
 }
 .home {
   height: 110vh;
-  background-image: url('../img/spring-gfa9632ad0_1280.jpg');
+  background-image: url('../img/alps-gb12347e0b_1280.jpg');
 }
-.add {
+.add {height: 100vh;
   background-image: url('../img/journal-g6df4dbb83_1280.jpg');
 }
 .account {
   background-image: url('../img/about-bg.jpg');
 }
 .title-wrapper {
-  padding: 150px 0;
-  color: #fff;
+padding-top: 100px;
+padding-bottom: 100px;
+  color: #000;
   font-size: 24px;
 }
 .title-hero::after {
@@ -206,7 +221,7 @@ input[type='search'] {
   display: block;
   width: 100px;
   height: 4px;
-  background-color: #fff;
+  background-color: #000;
   margin: 15px auto;
 }
 
