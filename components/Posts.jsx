@@ -16,7 +16,6 @@ const Posts = () => {
     dispatch(fetchPosts());
   }, [dispatch]);
 
-  console.log(posts);
 
   return (
     <div className="wrapper-posts-list">

@@ -1,3 +1,5 @@
+"use client"
+
 const Post = ({ post }) => {
   const { title, body } = post;
 
