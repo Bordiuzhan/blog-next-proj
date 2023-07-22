@@ -1,5 +1,9 @@
 import Link from "next/link";
 
+
+import { Post } from '@/components/Post';
+
+
 const BASE_URL=process.env.BASE_URL;
 
 async function getData(id) {
@@ -25,13 +29,12 @@ export async function generateMetadata({ params: { id } }) {
   };
 }
 
-export default async function Post({ params: { id } }) {
+export default async function PostPage({ params: { id } }) {
   const post = await getData(id);
 
   return (
     <>
-    <Link key={'Go back'} href={'/blog'}>⬅ Go back</Link>
-      <h1> {post.title}</h1>
-      <p>{post.body}</p>
+    <Link className="back-btn" key={'Go back'} href={'/blog'}>⬅ Go back</Link>
+     <Post post={post}></Post>
     </> );
 }

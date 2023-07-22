@@ -70,7 +70,8 @@ form {
 }
 
 form button,
-button {  width: 85%;
+button {
+  width: 85%;
   height: 40px;
   margin: 12px auto 10%;
   color: #fff;
@@ -80,7 +81,7 @@ button {  width: 85%;
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  transition: .2s ease-in;
+  transition: 0.2s ease-in;
 }
 
 input[type='search'] {
@@ -139,6 +140,7 @@ input[type='search'] {
   cursor: pointer;
   margin-top: 20px;
   float: right;
+  width: 150px;
   height: 40px;
   padding-left: 24px;
   padding-right: 24px;
@@ -151,12 +153,13 @@ input[type='search'] {
   border-top: 1px solid #fff;
   -webkit-box-shadow: 0px 2px 14px #000;
   box-shadow: 0px 2px 14px #000;
-  background-color: #62add6;
+  background-color: #573b8a;
 }
 
 .add-button:hover,
 .add-button:active,
 .add-button:focus {
+  background: #6d44b8;
   zoom: 1;
   filter: alpha(opacity=80);
   opacity: 0.8;
@@ -164,7 +167,8 @@ input[type='search'] {
 
 .stack {
   height: 100vh;
-  background-image: url("../img/notepad-g0314acffd_1280.jpg");
+  background-image: url('../img/notepad-g0314acffd_1280.jpg');
+  object-fit: cover;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -184,14 +188,13 @@ input[type='search'] {
   height: 400px;
 }
 
-
-.home-text-container{
+.home-text-container {
   padding-top: 300px;
-  margin: auto ;
+  margin: auto;
   text-align: center;
   width: 50%;
 }
-.home-text{
+.home-text {
   font-weight: bold;
   font-size: 24px;
   margin: 0;
@@ -204,15 +207,16 @@ input[type='search'] {
   height: 110vh;
   background-image: url('../img/alps-gb12347e0b_1280.jpg');
 }
-.add {height: 100vh;
+.add {
+  height: 100vh;
   background-image: url('../img/journal-g6df4dbb83_1280.jpg');
 }
 .account {
   background-image: url('../img/about-bg.jpg');
 }
 .title-wrapper {
-padding-top: 100px;
-padding-bottom: 100px;
+  padding-top: 100px;
+  padding-bottom: 100px;
   color: #000;
   font-size: 24px;
 }
@@ -246,7 +250,7 @@ padding-bottom: 100px;
 .posts-list a {
   text-decoration: none;
 }
-.post-title {
+.post-title-card {
   font-size: 36px;
   text-align: center;
 }
@@ -259,10 +263,12 @@ padding-bottom: 100px;
 .post-link {
   display: block;
 }
-.post-link:hover,
-.post-link:focus {
-  /* color: #0085a1; */
+.delete-btn {
+  display: block;
+  margin: auto;
+  width: 150px;
 }
+
 .wrapper-post {
   color: #2c2c32;
 }
@@ -283,6 +289,7 @@ padding-bottom: 100px;
   display: flex;
   justify-content: space-evenly;
   list-style: none;
+  margin-bottom: 40px;
 }
 .user-menu-link:hover,
 .user-menu-link:active {
@@ -392,9 +399,6 @@ footer {
   }
 }
 
-
-
-
 .main {
   margin-top: 350px;
   position: relative;
@@ -437,7 +441,7 @@ label {
   display: flex;
   font-weight: bold;
   cursor: pointer;
-  transition: .5s ease-in-out;
+  transition: 0.5s ease-in-out;
 }
 
 .input {
@@ -455,12 +459,12 @@ label {
   background: #eee;
   border-radius: 60% / 10%;
   transform: translateY(5%);
-  transition: .8s ease-in-out;
+  transition: 0.8s ease-in-out;
 }
 
 .register label {
   color: #573b8a;
-  transform: scale(.6);
+  transform: scale(0.6);
 }
 
 #chk:checked ~ .register {
@@ -473,9 +477,9 @@ label {
 }
 
 #chk:checked ~ .login label {
-  transform: scale(.6);
+  transform: scale(0.6);
   margin: 5% 0 5%;
-}   
+}
 /*Button*/
 .form button {
   width: 85%;
@@ -488,14 +492,73 @@ label {
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  transition: .2s ease-in;
+  transition: 0.2s ease-in;
 }
 
 .form button:hover {
   background-color: #6d44b8;
 }
 
-.form, span{
+.form,
+span {
   text-align: center;
   color: #fff;
+}
+
+/* Page Post */
+.container-post {
+  margin: 100px auto;
+  min-height: 90vh;
+}
+.container-post-body {
+  height: 60vh;
+  margin: 0;
+  box-shadow: 0 0 10px;
+}
+.post-title {
+  padding: 0 20px;
+  font-size: 70px;
+  font-weight: 400;
+  text-align: center;
+}
+
+.post-body {
+  padding: 20px;
+}
+
+/* Button Back */
+
+.back-btn {
+  display: flex;
+  height: 3em;
+  width: 150px;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  margin: 20px;
+  color: #000;
+  background-color: #573b8a;
+  border-radius: 3px;
+  letter-spacing: 1px;
+  transition: all 0.2s linear;
+  cursor: pointer;
+  border: none;
+  background: #ab8dc8;
+}
+
+.back-btn > svg {
+  margin-right: 5px;
+  margin-left: 5px;
+  font-size: 20px;
+  transition: all 0.4s ease-in;
+}
+
+.back-btn:hover > svg {
+  font-size: 1.2em;
+  transform: translateX(-5px);
+}
+
+.back-btn:hover {
+  box-shadow: 9px 9px 33px #d1d1d1, -9px -9px 33px #ffffff;
+  transform: translateY(-2px);
 }

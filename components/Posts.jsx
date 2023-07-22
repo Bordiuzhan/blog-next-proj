@@ -19,11 +19,13 @@ const Posts = () => {
   console.log(posts);
 
   return (
-    <div className='wrapper-posts-list'>
+    <div className="wrapper-posts-list">
       <ul>
         {posts.map((post) => (
-          <li className='posts-list' key={post._id}>
-            <Link className='post-link' href={`/blog/${post._id}`}><PostCard data={post}/></Link>
+          <li className="posts-list" key={post._id}>
+            <Link className="post-link" href={`/blog/${post._id}`}>
+              <PostCard data={post} />
+            </Link>
           </li>
         ))}
       </ul>

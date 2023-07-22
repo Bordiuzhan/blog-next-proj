@@ -29,9 +29,9 @@ export default function MyPosts() {
   }, [dispatch]);
   console.log(posts);
   console.log(session);
-  
-  const userId=session?.user?._id ||session?.user?.id
-console.log(userId);
+
+  const userId = session?.user?._id || session?.user?.id;
+  console.log(userId);
 
   if (!session || !session.user || !userId) {
     return <h1>Loading...</h1>;
@@ -51,14 +51,17 @@ console.log(userId);
   }
 
   return (
-    <div className='wrapper-posts-list'>
-    <ul>
-      {myPosts.map((post) => (
-        <li className='posts-list' key={post._id}>
-          <Link className='post-link' href={`/blog/${post._id}`}><PostCard data={post}/><button>Delete</button></Link>
-        </li>
-      ))}
-    </ul>
+    <div className="wrapper-posts-list">
+      <ul>
+        {myPosts.map((post) => (
+          <li className="posts-list" key={post._id}>
+            <Link className="post-link" href={`/blog/${post._id}`}>
+              <PostCard data={post} />
+              <button className="delete-btn">Delete</button>
+            </Link>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }

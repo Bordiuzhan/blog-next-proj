@@ -34,7 +34,7 @@ const SignInForm = () => {
   return (<>
     <div className="main"> 
     <form onSubmit={handleSubmit} className="form">
-      <label for="chk" aria-hidden="true">Log in</label>
+      <label  aria-hidden="true">Log in</label>
       <input
         type="email"
         name="email"
