@@ -6,16 +6,15 @@ export const metadata = {
 };
 
 export default async function Blog() {
-
   return (
     <>
       <div className="img-hero blog">
         <div className="title-wrapper">
           <h1 className="title-hero">Blog page</h1>
-           <PostSearch />
+          <PostSearch />
         </div>
       </div>
-      <Posts />
+      {/* <Posts /> */}
     </>
   );
 }
