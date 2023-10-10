@@ -14,7 +14,7 @@ export default async function Blog() {
           <PostSearch />
         </div>
       </div>
-      {/* <Posts /> */}
+      <Posts />
     </>
   );
 }
