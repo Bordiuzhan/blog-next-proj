@@ -14,22 +14,22 @@ async function getData(id) {
   return response.json();
 }
 
-// export async function generateMetadata({ params: { id } }) {
-//   const post = await getData(id);
+export async function generateMetadata({ params: { id } }) {
+  const post = await getData(id);
 
-//   return {
-//     title: post.title,
-//   };
-// }
+  return {
+    title: post.title,
+  };
+}
 
 export default async function PostPage({ params: { id } }) {
   const post = await getData(id);
 
   return (
     <>
-      <Link className="back-btn" key={'Go back'} href={'/blog'}>
+      {/* <Link className="back-btn" key={'Go back'} href={'/blog'}>
         ⬅ Go back
-      </Link>
+      </Link> */}
       <Post post={post}></Post>
     </>
   );
