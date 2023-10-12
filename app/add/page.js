@@ -2,6 +2,10 @@ import FormAddPosts from '@/components/FormAddPost';
 import { authConfig } from '@/config/auth';
 import { getServerSession } from 'next-auth';
 
+export const metadata = {
+  title: 'Add Blog',
+};
+
 export default async function PageAddPost() {
   const session = await getServerSession(authConfig);
 

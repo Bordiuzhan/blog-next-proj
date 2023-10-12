@@ -4,12 +4,10 @@ import Posts from '@/models/Posts';
 
 const handler = async (req, { params }) => {
   const { id } = await params;
-  console.log('id', id);
 
   try {
     await dbConnect();
     const post = await Posts.findById(id);
-    console.log('post', post);
 
     if (!post)
       return NextResponse.json(
