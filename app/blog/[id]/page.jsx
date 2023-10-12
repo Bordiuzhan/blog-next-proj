@@ -1,29 +1,21 @@
 import Link from 'next/link';
 import { Post } from '@/components/Post';
-import { fetchPostId } from '@/lib/fetchPostId';
 
-const BASE_URL = process.env.BASE_URL;
+// const BASE_URL = process.env.BASE_URL;
 
-async function getData(id) {
-  const post = await fetchPostId(id);
-  return post;
-}
+// export function generateMetadata({ params: { id } }) {
+//   return {
+//     // title: post.title,
+//   };
+// }
 
-export async function generateMetadata({ params: { id } }) {
-  const post = await getData(id);
-  return {
-    title: post.title,
-  };
-}
-
-export default async function PostPage({ params: { id } }) {
-  const post = await getData(id);
+export default function PostPage({ params: { id } }) {
   return (
     <>
       <Link className="back-btn" key={'Go back'} href={'/blog'}>
         ⬅ Go back
       </Link>
-      {post && <Post post={post} />}
+      {id && <Post data={id} />}
     </>
   );
 }
