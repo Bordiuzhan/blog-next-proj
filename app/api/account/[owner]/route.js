@@ -8,7 +8,6 @@ const handler = async (req, { params }) => {
   try {
     await dbConnect();
     const posts = await Posts.find({ owner });
-    console.log('posts acount', posts);
 
     if (!posts) {
       return NextResponse.json(

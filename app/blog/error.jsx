@@ -1,7 +1,7 @@
-"use client"
+'use client';
 
-export default function ErrorWrapper({error}){
-    console.log(error);
+export default function ErrorWrapper({ error }) {
+  console.log(error);
 
-    return <h1>Oops !!! {error.message}</h1>
+  return <h1>Oops !!! </h1>;
 }

@@ -6,7 +6,6 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 const Post = ({ data }) => {
-  console.log(typeof data);
   const dispatch = useDispatch();
   const post = useSelector((state) => selectPostById(state, data));
 
