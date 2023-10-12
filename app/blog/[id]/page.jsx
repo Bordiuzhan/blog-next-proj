@@ -8,12 +8,12 @@ async function getData(id) {
   return response.json();
 }
 
-export async function generateMetadata({ params: { id } }) {
-  const post = await getData(id);
-  return {
-    title: post.title,
-  };
-}
+// export async function generateMetadata({ params: { id } }) {
+//   const post = await getData(id);
+//   return {
+//     title: post.title,
+//   };
+// }
 
 export default async function PostPage({ params: { id } }) {
   // const post = await getData(id);
