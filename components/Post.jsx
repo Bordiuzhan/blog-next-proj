@@ -1,6 +1,7 @@
-"use client"
+'use client';
 
 const Post = ({ post }) => {
+  console.log('Post', post);
   const { title, body } = post;
 
   return (

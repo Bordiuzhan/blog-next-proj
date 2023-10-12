@@ -1,17 +1,7 @@
 'use client';
 
-// import { getServerSession } from 'next-auth';
-// import { authConfig } from '@/config/auth';
-
 import Link from 'next/link';
 
-// const BASE_URL = process.env.BASE_URL;
-
-// async function getMyPosts(owner) {
-//   const response = await fetch(`${BASE_URL}/api/account/${owner}`);
-
-//   return response.json();
-// }
 import { fetchPosts } from '@/redux/operations';
 import { selectPosts } from '@/redux/selectors';
 import { useSession } from 'next-auth/react';
@@ -27,26 +17,15 @@ export default function MyPosts() {
   useEffect(() => {
     dispatch(fetchPosts());
   }, [dispatch]);
-  console.log(posts);
-  console.log(session);
 
   const userId = session?.user?._id || session?.user?.id;
-  console.log(userId);
 
   if (!session || !session.user || !userId) {
     return <h1>Loading...</h1>;
   }
 
   const myPosts = posts.filter((post) => post.owner === session.user.email);
-  console.log(myPosts);
-  // const session = await getServerSession(authConfig);
-  // console.log(session.user._id);
-
-  // const posts = await getMyPosts(session.user._id);
-
-  // console.log(posts);
-
-  if (myPosts === []) {
+  if (myPosts.length === 0) {
     return <h3>You have no posts yet</h3>;
   }
 
