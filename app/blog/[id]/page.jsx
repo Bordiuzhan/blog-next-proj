@@ -16,13 +16,13 @@ export async function generateMetadata({ params: { id } }) {
 }
 
 export default async function PostPage({ params: { id } }) {
-  const post = await getData(id);
+  // const post = await getData(id);
   return (
     <>
       <Link className="back-btn" key={'Go back'} href={'/blog'}>
         ⬅ Go back
       </Link>
-      {post && <Post post={post} />}
+      {/* {post && <Post post={post} />} */}
     </>
   );
 }
