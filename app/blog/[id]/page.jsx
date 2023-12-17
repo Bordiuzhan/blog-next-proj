@@ -21,6 +21,7 @@ async function getData(id) {
 
 export async function generateMetadata({ params: { id } }) {
 
+  console.log("TYT ID",id);
     const post = await getData(id);
 
   return {

@@ -1,4 +1,7 @@
 import Link from 'next/link';
+export const metadata = {
+  title: 'Account',
+};
 
 export default function AccountLayout({ children }) {
   return (
@@ -9,11 +12,15 @@ export default function AccountLayout({ children }) {
         </div>
       </div>
       <ul className="user-menu-list">
-        <li >
-          <Link href="/account" className='user-menu-link' >Profile</Link>
+        <li>
+          <Link href="/account" className="user-menu-link">
+            Profile
+          </Link>
         </li>
-        <li >
-          <Link href="/account/myPosts" className='user-menu-link'>My posts</Link>
+        <li>
+          <Link href="/account/myPosts" className="user-menu-link">
+            My posts
+          </Link>
         </li>
       </ul>
       {children}

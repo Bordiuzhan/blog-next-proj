@@ -19,20 +19,22 @@ const postsSlice = createSlice({
     isLoading: false,
     error: null,
   },
-  extraReducers: {
-    [addPost.pending]: handlePending,
-    [addPost.fulfilled](state) {
-      state.isLoading = false;
-      state.error = null;
-    },
-    [addPost.rejected]: handleRejected,
-    [fetchPosts.pending]: handlePending,
-    [fetchPosts.fulfilled](state, action) {
-      state.isLoading = false;
-      state.error = null;
-      state.posts = action.payload;
-    },
-    [fetchPosts.rejected]: handleRejected,
+  reducers: {},
+  extraReducers: (builder) => {
+    builder
+      .addCase(addPost.pending, handlePending)
+      .addCase(addPost.fulfilled, (state) => {
+        state.isLoading = false;
+        state.error = null;
+      })
+      .addCase(addPost.rejected, handleRejected)
+      .addCase(fetchPosts.pending, handlePending)
+      .addCase(fetchPosts.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+        state.posts = action.payload;
+      })
+      .addCase(fetchPosts.rejected, handleRejected);
   },
 });
 
